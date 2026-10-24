@@ -1,0 +1,89 @@
+.card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card.dragging {
+  opacity: 0.45;
+  transform: scale(0.97);
+  box-shadow: none;
+  border: 1px dashed var(--blue-primary);
+}
+
+.card.dropTarget {
+  border-top: 3px solid var(--blue-primary);
+  box-shadow: 0 -3px 8px rgba(32, 157, 215, 0.2);
+  transform: translateY(2px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.accentBar {
+  width: 24px;
+  height: 3px;
+  border-radius: 9999px;
+  background-color: var(--accent-yellow);
+  margin-bottom: 4px;
+}
+
+.cardTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark-navy);
+  line-height: 1.35;
+  word-break: break-word;
+  flex: 1;
+}
+
+.deleteButton {
+  opacity: 0;
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.card:hover .deleteButton,
+.card:focus-within .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.cardDetails {
+  font-size: 0.85rem;
+  color: var(--gray-text);
+  line-height: 1.5;
+  word-break: break-word;
+}

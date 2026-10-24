@@ -1,25 +1,110 @@
-# Kanban Project Manager
+# Kanban Board
 
-## Instructions
+A lightweight, single-board Kanban project management web application built with Next.js, React, and TypeScript. Designed with a custom design system, native HTML5 drag-and-drop mechanics, and automated test coverage.
 
-This is a skeleton project to be the basis for your Kanban project for Week 1 of the Complete AI Coder Course. See the course resources for more.
+## Features
 
-You should clone this repo within your projects directory with:
+- Single board workflow with 5 customizable columns (Backlog, To Do, In Progress, In Review, Done)
+- Inline column title editing with instant save on Enter or blur
+- Card creation with title and details validation
+- Drag-and-drop card movement across columns
+- Reordering cards within the same column by dropping onto target cards
+- Instant card deletion
+- Pre-populated dummy project data
+- Clean UI built with custom CSS variables and responsive horizontal scrolling
+- Zero third-party component library bloat
 
-`git clone https://github.com/ed-donner/kanban.git`
+## Tech Stack
 
-And then refine the AGENTS.md before using in your Coding Agent of choice.
+- Framework: Next.js 16 (App Router)
+- Language: TypeScript
+- Styling: Vanilla CSS / CSS Modules
+- Icons: Lucide React
+- Unit Testing: Vitest, React Testing Library, JSDOM
+- End-to-End Testing: Playwright
+- CI/CD: GitHub Actions
 
-If you don't have git installed, you can [install it here](https://git-scm.com/install/) and you might need to reboot afterwards.
+## Project Structure
 
-## Contributing your AGENTS.md
+```
+kanban/
+├── .github/
+│   └── workflows/
+│       └── ci.yml             # Automated CI pipeline
+├── frontend/
+│   ├── e2e/
+│   │   └── kanban.spec.ts     # Playwright E2E integration tests
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── globals.css    # Design tokens and base styles
+│   │   │   ├── layout.tsx     # Root document layout
+│   │   │   └── page.tsx       # Main page entry
+│   │   ├── components/
+│   │   │   ├── KanbanBoard.tsx# Board state and column management
+│   │   │   ├── ColumnItem.tsx # Column container, title editing, drop target
+│   │   │   ├── CardItem.tsx   # Draggable card item and delete trigger
+│   │   │   └── AddCardForm.tsx# Inline card creation form
+│   │   ├── data/
+│   │   │   └── initialData.ts # Default board cards and columns
+│   │   ├── types/
+│   │   │   └── kanban.ts      # TypeScript interfaces
+│   │   └── __tests__/
+│   │       └── KanbanBoard.test.tsx # Vitest unit test suite
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── vitest.config.mts
+│   └── playwright.config.ts
+└── README.md
+```
 
-If you have suggested AGENTS.md changes that have worked well for you, please contribute them to benefit other students! Follow the instructions linked [here](https://edwarddonner.com/pr) to raise a PR to put it in community_contributions. Name your file something like ED_DONNER_AGENTS.md but with your name..
+## Getting Started
 
-I can't wait to see your changes.
+### Prerequisites
 
-## Posting your app
+- Node.js 18.x or later (Node 22 recommended)
+- npm 9.x or later
 
-When you've successfully built a Kanban app, if you'd like to post about it on LinkedIn and tag me, then I'll weigh in to amplify your success and draw more attention to your achievements.
+### Installation
 
-If you see other students doing this, please weigh in yourself to add your support and encouragement. It's so helpful for the community if we support each other.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/MUNEEBJAVAID/kanban.git
+   cd kanban/frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Testing
+
+### Unit Tests
+Runs the Vitest suite covering column rendering, renaming, card creation, deletion, and same-column reordering:
+```bash
+cd frontend
+npm test
+```
+
+### End-to-End Tests
+Runs the Playwright browser integration tests:
+```bash
+cd frontend
+npm run test:e2e
+```
+
+## Production Build
+
+To build the static optimized production bundle:
+```bash
+cd frontend
+npm run build
+npm run start
+```
